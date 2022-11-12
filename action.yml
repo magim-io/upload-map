@@ -1,0 +1,12 @@
+name: Upload Map
+description: Uploads specified map to Magim server
+inputs:
+  map-name:
+    description: Provide map name
+    required: true
+  repository:
+    description: Provide GitHub repository
+    required: true
+runs:
+  using: node16
+  main: action/index.js
