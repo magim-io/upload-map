@@ -8922,7 +8922,7 @@ async function main() {
       `../../../../../hunterrank/hunterrank/server/${mapName}.json`
     );
 
-    const payload = JSON.parse(map.toString());
+    const payload = await JSON.parse(map.toString());
 
     await axios.post("https://smee.io/z5CwJFZnq0sBSYS", payload, {
       headers: {
