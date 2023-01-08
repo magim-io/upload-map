@@ -8923,6 +8923,7 @@ async function main() {
     );
 
     const payload = await JSON.parse(map.toString());
+    console.log("payload", payload);
 
     await axios.post("https://smee.io/z5CwJFZnq0sBSYS", payload, {
       headers: {
