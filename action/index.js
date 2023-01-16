@@ -8919,7 +8919,7 @@ async function main() {
     }
 
     const map = await readFile(
-      `../../../../../hunterrank/hunterrank/server/${mapName}.json`
+      `../../../../../Kenflix/Kenflix/${mapName}.json`
     );
 
     const payload = await JSON.parse(map.toString());
