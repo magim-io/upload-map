@@ -8918,12 +8918,15 @@ async function main() {
       throw new Error("mapName and repository are undefined");
     }
 
+    repository = repository.split("/")[1];
+    console.log("repository:", repository);
+
     const map = await readFile(
-      `../../../../../Kenflix/Kenflix/${mapName}.json`
+      `../../../../../${repository}/${repository}/${mapName}.json`
     );
 
     const payload = await JSON.parse(map.toString());
-    console.log("payload", payload);
+    console.log("payload:", payload);
 
     await axios.post("https://smee.io/z5CwJFZnq0sBSYS", payload, {
       headers: {
