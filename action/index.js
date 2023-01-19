@@ -8918,11 +8918,11 @@ async function main() {
       throw new Error("mapName and repository are undefined");
     }
 
-    repository = repository.split("/")[1];
-    console.log("repository:", repository);
+    let repo = repository.split("/")[1];
+    console.log("repo:", repo);
 
     const map = await readFile(
-      `../../../../../${repository}/${repository}/${mapName}.json`
+      `../../../../../${repo}/${repo}/${mapName}.json`
     );
 
     const payload = await JSON.parse(map.toString());
