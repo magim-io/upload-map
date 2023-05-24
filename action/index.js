@@ -8928,12 +8928,16 @@ async function main() {
     const payload = await JSON.parse(map.toString());
     console.log("payload:", payload);
 
-    await axios.post("https://smee.io/z5CwJFZnq0sBSYS", payload, {
-      headers: {
-        "x-github-event": "magim_dependencymap",
-        "x-github-repository": repository,
-      },
-    });
+    await axios.post(
+      "https://codeseer01-api.azurewebsites.net/api/v1/maps",
+      payload,
+      {
+        headers: {
+          "x-github-event": "magim_dependencymap",
+          "x-github-repository": repository,
+        },
+      }
+    );
   } catch (err) {
     core.setFailed(`Action failed with error: ${err}`);
   }
