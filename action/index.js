@@ -8919,14 +8919,19 @@ async function main() {
     }
 
     let repo = repository.split("/")[1];
-    console.log("repo:", repo);
 
     const map = await readFile(
       `../../../../../${repo}/${repo}/${mapName}.json`
     );
 
     const payload = await JSON.parse(map.toString());
-    console.log("payload:", payload);
+
+    let config = await axios.get(
+      `https://codeseer01-api.azurewebsites.net/api/v1/domains/config?repository=${repository}`
+    );
+
+    let newVersion = config.data["version"];
+    console.log("\nNew version to create: ", newVersion);
 
     await axios.post(
       "https://codeseer01-api.azurewebsites.net/api/v1/maps",
@@ -8935,6 +8940,7 @@ async function main() {
         headers: {
           "x-github-event": "magim_dependencymap",
           "x-github-repository": repository,
+          "x-github-version": newVersion,
         },
       }
     );
