@@ -8927,7 +8927,9 @@ async function main() {
     const payload = await JSON.parse(map.toString());
 
     let config = await axios.get(
-      `https://codeseer01-api.azurewebsites.net/api/v1/domains/config?repository=${repository}`
+      `https://codeseer01-api.azurewebsites.net/api/v1/domains/config?owner=${
+        repository.split("/")[0]
+      }&repository=${repository.split("/")[1]}`
     );
 
     let newVersion = config.data["version"];
