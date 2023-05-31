@@ -8926,11 +8926,16 @@ async function main() {
 
     const payload = await JSON.parse(map.toString());
 
+    console.log("\nOwner: ", repository.split("/")[0]);
+    console.log("\nRepository: ", repository.split("/")[1]);
+
     let config = await axios.get(
       `https://codeseer01-api.azurewebsites.net/api/v1/domains/config?owner=${
         repository.split("/")[0]
       }&repository=${repository.split("/")[1]}`
     );
+
+    console.log("\nConfig: ", config.data);
 
     let newVersion = config.data["version"];
     console.log("\nNew version to create: ", newVersion);
